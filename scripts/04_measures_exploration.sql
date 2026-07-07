@@ -1,0 +1,51 @@
+/*
+===============================================================================
+Measures Exploration (Key Metrics)
+===============================================================================
+Purpose:
+    - To calculate aggregated metrics (e.g., totals, averages) for quick insights.
+    - To build a consolidated Executive KPI Dashboard template.
+
+Functions Used:
+    - COUNT(), SUM(), AVG(), ROUND(), UNION ALL
+===============================================================================
+*/
+
+-- ====================================================================
+-- 1. Individual Metric Audits
+-- ====================================================================
+-- Find the Total Sales
+SELECT SUM(sales_amount) AS total_sales FROM datawarehouse_gold.fact_sales;
+
+-- Find total items sold
+SELECT SUM(quantity) AS total_quantity FROM datawarehouse_gold.fact_sales;
+
+-- Find the average selling price
+SELECT AVG(price) AS avg_price FROM datawarehouse_gold.fact_sales;
+
+-- Find the unique number of Orders
+SELECT COUNT(DISTINCT order_number) AS total_orders FROM datawarehouse_gold.fact_sales;
+
+-- Find the total number of products
+SELECT COUNT(product_key) AS total_products FROM datawarehouse_gold.dim_products;
+
+-- Find the total number of customers
+SELECT COUNT(customer_key) AS total_customers FROM datawarehouse_gold.dim_customers;
+
+-- Find the total number of customers that has placed an order
+SELECT COUNT(DISTINCT customer_key) AS total_customers FROM datawarehouse_gold.fact_sales;
+
+-- ====================================================================
+-- 2. Consolidated Executive KPI Dashboard Report
+-- ====================================================================
+SELECT 'Total Sales' AS measure_name, ROUND(SUM(sales_amount), 2) AS measure_value FROM datawarehouse_gold.fact_sales
+UNION ALL
+SELECT 'Total Quantity', ROUND(SUM(quantity), 2) FROM datawarehouse_gold.fact_sales
+UNION ALL
+SELECT 'Average Price', ROUND(AVG(price), 2) FROM datawarehouse_gold.fact_sales
+UNION ALL
+SELECT 'Total Orders', ROUND(COUNT(DISTINCT order_number), 2) FROM datawarehouse_gold.fact_sales
+UNION ALL
+SELECT 'Total Products', ROUND(COUNT(DISTINCT product_key), 2) FROM datawarehouse_gold.dim_products
+UNION ALL
+SELECT 'Total Customers', ROUND(COUNT(customer_key), 2) FROM datawarehouse_gold.dim_customers;
