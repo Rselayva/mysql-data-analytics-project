@@ -13,7 +13,7 @@ Table Used:
 */
 
 -- =============================================================
--- Inventory Check: List all tables and views across datawarehouse layers
+-- 1. Inventory Check: List all tables and views across datawarehouse layers
 -- =============================================================
 SELECT 
     TABLE_SCHEMA AS database_name, 
@@ -24,7 +24,7 @@ WHERE TABLE_SCHEMA LIKE 'datawarehouse_%'
 ORDER BY TABLE_TYPE, TABLE_SCHEMA;
 
 -- =============================================================
--- Schema Inspection: Generic template to inspect any table's columns
+-- 2. Schema Inspection: Generic template to inspect any table's columns
 -- =============================================================
 -- Instructions: Change the TABLE_NAME to inspect other assets
 -- (e.g., 'dim_products', 'fact_sales')

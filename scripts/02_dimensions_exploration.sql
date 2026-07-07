@@ -5,7 +5,7 @@ Dimensions Exploration
 Purpose:
     - To explore the unique categorical values within dimension tables.
     
-SQL Functions Used:
+Functions Used:
     - DISTINCT
     - ORDER BY
 ===============================================================================
