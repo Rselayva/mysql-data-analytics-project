@@ -26,22 +26,22 @@ The SQL scripts in this repository are structured sequentially to reflect a stan
   **量體規模分析**：找出最大、最小或異常極值的資料分佈（如高價值訂單分析）。
 * `06_ranking_analysis.sql` — **Ranking Analysis**: Leverages window functions (`ROW_NUMBER()`, `RANK()`) to perform localized partition rankings.  
   **排名與競賽分析**：使用 Window Functions（如 `ROW_NUMBER()`, `RANK()`）對業務指標進行分組排名。
-* `07_change_over_time_analysis.sql` — **Time-Series Analysis**: Tracks period-over-period growth metrics such as MoM (Month-over-Month) and YoY (Year-over-year) trends.  
-  **時間序列趨勢分析**：計算同季（YoY）、環比（MoM）成長率以及長期的業務波動趨勢。
-* `08_cumulative_analysis.sql` — **Cumulative Analytics**: Implements calculations like running totals and rolling averages over timeline vectors.  
-  **累計指標分析**：編寫累計消費金額與移動平均等時間累計指標。
-* `09_performance_analysis.sql` — **Performance Evaluation**: Measures operational efficiency against benchmark baselines.  
-  **績效表現分析**：評估銷售管道、活動效益，比較實際表現與設定目標。
-* `10_data_segmentation.sql` — **Customer/Product Segmentation**: Groups entities using business logic rules (e.g., RFM scoring or frequency categorization).  
-  **資料分群與標籤**：依據特定商業規則（如 RFM 模型、消費頻率）對客戶或產品進行分群。
+* `07_change_over_time_analysis.sql` — **Time-Series Analysis**: Tracks baseline timeline trends and absolute value fluctuations across months and years.  
+  **時間序列趨勢分析**：計算基礎時間維度上的絕對營收波動與趨勢基線。
+* `08_cumulative_analysis.sql` — **Cumulative Analytics**: Implements running totals and rolling averages (3-Month Moving Average) over timeline vectors.  
+  **累計指標分析**：編寫月/年累計消費金額（Running Total）與 3MA 滑動視窗平均等時間指標。
+* `09_performance_analysis.sql` — **Performance Evaluation**: Measures product sales efficiency against historical averages and calculates Year-over-Year (YoY) growth rates.  
+  **績效表現分析**：對比商品歷史平均業績（Benchmarking），並計算 YoY（同期比）增長率。
+* `10_data_segmentation.sql` — **Customer/Product Segmentation**: Groups products by cost ranges and segments customers based on Lifetime Value (CLV) and lifespan parameters.  
+  **資料分群與標籤**：依據特定商業規則，對商品（成本區間）與客戶（依首購至今的真實年資與總消費額進行 CLV 價值分群）進行標籤化。。
 * `11_part_to_whole_analysis.sql` — **Part-to-Whole Contribution**: Determines individual share percentages relative to the grand total.  
   **佔比與貢獻度分析**：計算個別品類或區域佔整體的百分比（貢獻度分佈）。
 
 ### 📊 3. Business Reporting Layer (商業報表產出)
-* `12_report_customers.sql` — **Customer Insights Report**: A consolidated, production-ready script summarizing lifetime value (LTV), retention, and behavior patterns.  
-  **客戶核心報表**：整合客戶留存率、終身價值（LTV）與活躍度的 Production 等級綜合報表。
-* `13_report_products.sql` — **Product Performance Report**: An end-to-end report evaluating inventory velocity, revenue contribution, and product lifecycles.  
-  **產品核心報表**：涵蓋產品銷售週期、庫存周轉與熱銷排行之決策報表。
+* `12_report_customers.sql` — **Customer Insights Report**: A production-ready, highly optimized view consolidating customer demographics, Recency, Lifespan, AOV, and value tiers.  
+  **客戶核心報表**：整合客戶流失預警近因（Recency）、年資（Lifespan）、客單價（AOV）與活躍度分群之客戶畫像視圖。
+* `13_report_products.sql` — **Product Performance Report**: An end-to-end evaluation of catalog performance, tracking product lifespan, selling price index (ASP), and sales velocity.  
+  **產品核心報表**：涵蓋產品銷售生命週期（Lifespan）、售出近因（Recency）、不重複客群數、平均售價（ASP）與業績貢獻分群之決策視圖。
 
 ---
 ## 🔗 Data Source & Architecture (資料來源與專案架構)
